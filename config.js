@@ -1,7 +1,7 @@
 module.exports = {
-db_url : '10.143.99.106',
+db_url : 'localhost', //your mysql IP address
 db_port : '3306',
-user : 'hmiuser',
-password : 'Wipro@123',
+user : '',   //your user name
+password : '', //your passwoerd
 database : 'sys'
 }
