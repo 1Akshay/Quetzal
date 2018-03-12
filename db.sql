@@ -40,3 +40,9 @@ VALUES (9, 'Sketch',null);
 
 INSERT INTO Skills (id, name, status)
 VALUES (10, 'Invision',null );
+
+INSERT INTO Skills (id, name, status)
+VALUES (11,'Java',null);
+
+INSERT INTO Skills (id, name, status)
+VALUES (101,'JavaScript',null);
