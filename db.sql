@@ -45,4 +45,4 @@ INSERT INTO Skills (id, name, status)
 VALUES (11,'Java',null);
 
 INSERT INTO Skills (id, name, status)
-VALUES (101,'JavaScript',null);
+VALUES (12,'JavaScript',null);
