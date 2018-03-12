@@ -42,19 +42,25 @@ $scope.edit(obj);
  }
 
 $scope.searchForSkill = function(obj){
-  console.log($scope.searchSkill);
-  console.log(obj);
-  console.log(obj.searchSkill);
+  // console.log($scope.searchSkill);
+  // console.log(obj);
+  // console.log(obj.searchSkill);
   //$scope.searchSkill = "";
   $http.get('http://localhost:3000/api/skills/').then(function(res) {
-      console.log($scope.skillList);
+    //  console.log($scope.skillList);
     var searchArr = [];
       for(let i = 0; i < res.data.length; i++){
-        if(res.data[i]['name'].toLowerCase().includes(obj.searchSkill)){
-            searchArr[0] = res.data[i];
-            $scope.skillList = searchArr;
+      //  console.log('data ',res.data[i]['name']);
+
+        if(res.data[i]['name'].toLowerCase().startsWith(obj.searchSkill.toLowerCase())){
+            console.log('string :',res.data[i]);
+            // searchArr[i] = res.data[i];
+            searchArr.push(res.data[i]);
+            //$scope.skillList = searchArr;
         }
       }
+      console.log('searchArr ',searchArr);
+      $scope.skillList = searchArr;
       console.log($scope.skillList);
  });
 }
@@ -77,6 +83,7 @@ $http.get('http://localhost:3000/api/skills/').then(function(res) {
     .then(function(res) {
       alert('Skill added successfully!');
         $scope.addSkills = {};
+        $scope.showAdd = false;
     }).catch(e => {$scope.addSkills = {};});
   }
 

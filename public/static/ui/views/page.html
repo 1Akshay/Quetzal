@@ -23,7 +23,7 @@
     <div class="addInput" ng-show="showAdd">
      <div class="input-group">
       <input type="text" class="form-control" placeholder="Add Skill" aria-describedby="basic-addon1" ng-model="addSkills.name">
-      <span class="bg-success" ng-click="addSkill()">Submit</span>
+      <span class="bg-success" ng-click="add()">Submit</span>
      </div>
      <div style="line-height: 3.4rem;" ng-click="changeStatus('approved');addSkills.status = true">
       <!-- <button type="button" name="button" ng-click="addSkills.status = true"> -->
@@ -40,7 +40,7 @@
   <div class="col-md-12">
    <div class="tableSection">
     <table class="table">
-     <tr ng-repeat="list in skillList">
+     <tr ng-repeat="list in skillList track by $index">
       <!-- <td>{{list.name}}</td> -->
       <td>
        <div ng-show="openEdit">
@@ -61,7 +61,7 @@
       <td class="text-right col-md-3" ng-class="{'text-green': list.status == 'true'}" ng-click=" list.status = 'true';changeStatus(this);">
        <span class="glyphicon glyphicon-ok"></span> Approve
       </td>
-      <td class="text-right col-md-3" ng-class="{'text-danger': list.status == 'false' || list.status == null }" ng-click="list.status = 'false';changeStatus(this);">
+      <td class="text-right col-md-3" ng-class="{'text-danger': list.status == 'false' || list.status == 'null' || list.status == null || list.status == undefined }" ng-click="list.status = 'false';changeStatus(this);">
        <span class="glyphicon glyphicon-remove"></span> Reject
       </td>
      </tr>

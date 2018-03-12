@@ -38,7 +38,7 @@ res.setHeader('Content-Type', 'application/json');
           }
       }
       else{
-          console.log('Error while performing Query.');
+          console.log('Error while performing Query.',err);
           return res.send({"err":"either database connection is not established or data is empty"});
         }
       });
@@ -78,15 +78,19 @@ router.post('/skills', (req,res) =>{
                       len = rows.length;
                       const obj = {};
                       obj.id = len+1;
+                      let s = len+1;
+                      console.log('s ',s );
                       obj.name = skill;
                       obj.status = status;
-                      db.query("INSERT INTO Skills (id, name, status) VALUES ("+len+1+","+skill+","+status+")",function(err,result){
+                      db.query("INSERT INTO Skills (id, name, status) VALUES ('"+s+"','"+skill+"','"+status+"')",function(err,result){
                         if(err){
                           resJson = {"err":"error while adding in db"};
+                          console.log('error while adding ',err);
                             return res.send(resJson);
                         }else {
                         db.query('SELECT * from Skills', function(newerr, newrows, newfields){
                         //  return res.send({"success":newrows});
+                        console.log(newerr+" "+newrows);
                         return res.send(newrows);
                         });
                         }
